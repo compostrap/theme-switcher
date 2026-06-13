@@ -1,6 +1,6 @@
 {
 	"name": "theme-switcher-compostrap",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"type": "module",
 	"description": "Bootstrap 5 theme switcher with optional icon and label support.",
 	"license": "MIT",
@@ -17,9 +17,12 @@
 	"exports": {
 		".": "./dist/index.js",
 		"./theme-switcher": "./dist/theme-switcher.js",
+		"./theme-switcher.css": "./dist/theme-switcher.css",
+		"./src/scss/*": "./src/scss/*",
 		"./src/*": "./src/*"
 	},
 	"devDependencies": {
+		"sass": "^1.97.1",
 		"vite": "^8.0.16"
 	},
 	"peerDependencies": {
@@ -27,6 +30,6 @@
 	},
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build"
+		"build": "vite build && sass src/scss/theme-switcher.scss dist/theme-switcher.css --style=expanded --no-source-map"
 	}
 }

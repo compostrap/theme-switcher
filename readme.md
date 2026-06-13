@@ -15,13 +15,14 @@ npm install theme-switcher-compostrap
 
 ```javascript
 import '@fortawesome/fontawesome-free/css/all.css';
+import 'theme-switcher-compostrap/theme-switcher.css';
 import ThemeSwitcher from 'theme-switcher-compostrap';
 
 new ThemeSwitcher().initialize();
 ```
 
 ```html
-<button type="button" class="btn btn-link p-0 text-decoration-none" data-theme-switcher>
+<button type="button" class="btn btn-link theme-switcher p-0 text-decoration-none" data-theme-switcher>
 	<i data-theme-switcher-icon class="fa-solid fa-moon"></i>
 	<span data-theme-switcher-label>Dark mode</span>
 </button>
@@ -39,6 +40,19 @@ The selected theme is stored in `localStorage`, so it is remembered on subsequen
 ```
 
 This package uses Font Awesome for the default icon classes. Import Font Awesome CSS in your application when you want to display the icons.
+
+## Styles
+Import the bundled CSS:
+
+```javascript
+import 'theme-switcher-compostrap/theme-switcher.css';
+```
+
+Or import the SCSS source in your Sass entry point:
+
+```scss
+@import "theme-switcher-compostrap/src/scss/theme-switcher";
+```
 
 ## Custom labels
 Use data attributes when the text should be translated by your application or template system:
