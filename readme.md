@@ -14,19 +14,38 @@ npm install theme-switcher-compostrap
 ## Usage
 
 ```javascript
-import '@fortawesome/fontawesome-free/css/all.css';
 import 'theme-switcher-compostrap/theme-switcher.css';
 import ThemeSwitcher from 'theme-switcher-compostrap';
 
 new ThemeSwitcher().initialize();
 ```
 
+Use a simple text switch:
+
 ```html
-<button type="button" class="btn btn-link theme-switcher p-0 text-decoration-none" data-theme-switcher>
-	<i data-theme-switcher-icon class="fa-solid fa-moon"></i>
+<button type="button" class="btn btn-link theme-switcher" data-theme-switcher>
 	<span data-theme-switcher-label>Dark mode</span>
 </button>
 ```
+
+Or add an icon from any icon library used by your project:
+
+```html
+<button
+	type="button"
+	class="btn btn-link theme-switcher"
+	data-theme-switcher
+	data-theme-light-icon="fa-solid fa-sun"
+	data-theme-dark-icon="fa-solid fa-moon"
+>
+	<i data-theme-switcher-icon></i>
+	<span data-theme-switcher-label>Dark mode</span>
+</button>
+```
+
+The package does not install an icon library. Use Font Awesome, Bootstrap Icons, or any other icon set.
+Labels and icon classes can be configured directly in HTML with `data-*` attributes or globally in
+JavaScript options.
 
 ## Built on
 - [Bootstrap 5](https://getbootstrap.com)
@@ -38,8 +57,6 @@ The selected theme is stored in `localStorage`, so it is remembered on subsequen
 ```html
 <html lang="en" data-bs-theme="light">
 ```
-
-This package uses Font Awesome for the default icon classes. Import Font Awesome CSS in your application when you want to display the icons.
 
 ## Styles
 Import the bundled CSS:
@@ -54,6 +71,9 @@ Or import the SCSS source in your Sass entry point:
 @import "theme-switcher-compostrap/src/scss/theme-switcher";
 ```
 
+The bundled CSS only aligns the optional icon and label. Colors should come from your layout, for example
+Bootstrap `nav-link` classes or your own navbar styles.
+
 ## Custom labels
 Use data attributes when the text should be translated by your application or template system:
 
@@ -64,7 +84,6 @@ Use data attributes when the text should be translated by your application or te
 	data-theme-light-label="Light mode"
 	data-theme-dark-label="Dark mode"
 >
-	<i data-theme-switcher-icon></i>
 	<span data-theme-switcher-label></span>
 </button>
 ```
@@ -74,7 +93,27 @@ Use data attributes when the text should be translated by your application or te
 
 The shorter `data-light-label` and `data-dark-label` attributes are also supported.
 
+You can also configure labels from JavaScript:
+
+```html
+<button type="button" data-theme-switcher>
+	<span data-theme-switcher-label></span>
+</button>
+```
+
+```javascript
+new ThemeSwitcher({
+	lightLabel: 'Light mode',
+	darkLabel: 'Dark mode',
+}).initialize();
+```
+
 ## Custom icons
+
+Icons are optional. Add an element with `data-theme-switcher-icon` only when your project loads an icon
+library.
+
+Set icon classes in HTML:
 
 ```html
 <button
@@ -82,6 +121,36 @@ The shorter `data-light-label` and `data-dark-label` attributes are also support
 	data-theme-switcher
 	data-theme-light-icon="fa-solid fa-sun"
 	data-theme-dark-icon="fa-solid fa-moon"
+>
+	<i data-theme-switcher-icon></i>
+	<span data-theme-switcher-label></span>
+</button>
+```
+
+Or configure icon classes from JavaScript:
+
+```html
+<button type="button" data-theme-switcher>
+	<i data-theme-switcher-icon></i>
+	<span data-theme-switcher-label></span>
+</button>
+```
+
+```javascript
+new ThemeSwitcher({
+	lightIcon: 'fa-solid fa-sun',
+	darkIcon: 'fa-solid fa-moon',
+}).initialize();
+```
+
+Bootstrap Icons work the same way:
+
+```html
+<button
+	type="button"
+	data-theme-switcher
+	data-theme-light-icon="bi bi-sun-fill"
+	data-theme-dark-icon="bi bi-moon-fill"
 >
 	<i data-theme-switcher-icon></i>
 	<span data-theme-switcher-label></span>
@@ -97,8 +166,8 @@ new ThemeSwitcher({
 	selector: '[data-theme-switcher]',
 	storageKey: 'bootstrap-theme',
 	defaultTheme: 'light',
-	lightIcon: 'fa-solid fa-sun',
-	darkIcon: 'fa-solid fa-moon',
+	lightIcon: '',
+	darkIcon: '',
 	lightLabel: 'Light mode',
 	darkLabel: 'Dark mode',
 }).initialize();

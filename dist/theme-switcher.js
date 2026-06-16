@@ -5,8 +5,8 @@ var e = class {
 			selector: "[data-theme-switcher]",
 			storageKey: "bootstrap-theme",
 			defaultTheme: "light",
-			lightIcon: "fa-solid fa-sun",
-			darkIcon: "fa-solid fa-moon",
+			lightIcon: "",
+			darkIcon: "",
 			lightLabel: "Light mode",
 			darkLabel: "Dark mode",
 			...e
