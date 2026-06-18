@@ -55,4 +55,4 @@ var e = class {
 	}
 };
 //#endregion
-export { e as default };
+export { e as ThemeSwitcher };

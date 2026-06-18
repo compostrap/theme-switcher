@@ -1,5 +1,2 @@
-import e from "./theme-switcher.js";
-//#region src/index.js
-var t = e;
-//#endregion
-export { e as ThemeSwitcher, t as default };
+import { ThemeSwitcher as e } from "./theme-switcher.js";
+export { e as ThemeSwitcher };

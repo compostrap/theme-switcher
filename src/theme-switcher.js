@@ -1,4 +1,4 @@
-export default class ThemeSwitcher {
+export class ThemeSwitcher {
 	constructor(options = {}) {
 		this.options = {
 			selector: '[data-theme-switcher]',

@@ -15,7 +15,7 @@ npm install theme-switcher-compostrap
 
 ```javascript
 import 'theme-switcher-compostrap/theme-switcher.css';
-import ThemeSwitcher from 'theme-switcher-compostrap';
+import { ThemeSwitcher } from 'theme-switcher-compostrap';
 
 new ThemeSwitcher().initialize();
 ```
