@@ -1,8 +1,8 @@
 {
 	"name": "theme-switcher-compostrap",
 	"version": "1.0.3",
-	"type": "module",
 	"description": "Bootstrap 5 theme switcher with optional icon and label support.",
+	"type": "module",
 	"license": "MIT",
 	"keywords": [
 		"bootstrap",

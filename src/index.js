@@ -1,3 +1,3 @@
-import { ThemeSwitcher } from "./theme-switcher.js";
+import { ThemeSwitcher } from './theme-switcher.js';
 
 export { ThemeSwitcher };

@@ -1,4 +1,5 @@
 ## Theme Switcher
+
 Bootstrap 5.3 theme switcher with optional icon and label support.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/compostrap/theme-switcher/blob/master/license)
@@ -48,9 +49,11 @@ Labels and icon classes can be configured directly in HTML with `data-*` attribu
 JavaScript options.
 
 ## Built on
+
 - [Bootstrap 5](https://getbootstrap.com)
 
 ## Introduction
+
 The switcher updates Bootstrap's global theme by changing `data-bs-theme` on the `<html>` element.
 The selected theme is stored in `localStorage`, so it is remembered on subsequent visits.
 
@@ -59,6 +62,7 @@ The selected theme is stored in `localStorage`, so it is remembered on subsequen
 ```
 
 ## Styles
+
 Import the bundled CSS:
 
 ```javascript
@@ -68,13 +72,14 @@ import 'theme-switcher-compostrap/theme-switcher.css';
 Or import the SCSS source in your Sass entry point:
 
 ```scss
-@import "theme-switcher-compostrap/src/scss/theme-switcher";
+@import 'theme-switcher-compostrap/src/scss/theme-switcher';
 ```
 
 The bundled CSS only aligns the optional icon and label. Colors should come from your layout, for example
 Bootstrap `nav-link` classes or your own navbar styles.
 
 ## Custom labels
+
 Use data attributes when the text should be translated by your application or template system:
 
 ```html
@@ -174,6 +179,7 @@ new ThemeSwitcher({
 ```
 
 ## Events
+
 The switcher dispatches a `theme-switcher:change` event on `window` after each theme update:
 
 ```javascript

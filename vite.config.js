@@ -1,21 +1,21 @@
-import { defineConfig } from "vite";
-import path from "path";
+import { defineConfig } from 'vite';
+import path from 'path';
 
 export default defineConfig({
-	base: "",
+	base: '',
 	build: {
-		outDir: "dist",
+		outDir: 'dist',
 		emptyOutDir: true,
 		lib: {
 			entry: {
-				index: path.resolve(__dirname, "src/index.js"),
-				"theme-switcher": path.resolve(__dirname, "src/theme-switcher.js")
+				index: path.resolve(__dirname, 'src/index.js'),
+				'theme-switcher': path.resolve(__dirname, 'src/theme-switcher.js')
 			},
-			formats: ["es"]
+			formats: ['es']
 		},
 		rollupOptions: {
 			output: {
-				entryFileNames: "[name].js"
+				entryFileNames: '[name].js'
 			}
 		}
 	}
