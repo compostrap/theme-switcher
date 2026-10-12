@@ -1,6 +1,6 @@
 ## Theme Switcher
 
-Bootstrap 5.3 theme switcher with optional icon and label support.
+Bootstrap theme switcher with optional icon and label support.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/compostrap/theme-switcher/blob/master/license)
 [![npm version](https://badge.fury.io/js/theme-switcher-compostrap.svg)](https://badge.fury.io/js/theme-switcher-compostrap)
