@@ -2,7 +2,7 @@
 
 Bootstrap 5 theme switcher with optional icon and label support.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/compostrap/theme-switcher/blob/master/license)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/compostrap/theme-switcher/blob/main/license)
 [![npm version](https://badge.fury.io/js/theme-switcher-compostrap.svg)](https://badge.fury.io/js/theme-switcher-compostrap)
 [![Build status](https://github.com/compostrap/theme-switcher/actions/workflows/build.yml/badge.svg)](https://github.com/compostrap/theme-switcher/actions/workflows/build.yml)
 
