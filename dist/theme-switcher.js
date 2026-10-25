@@ -1,5 +1,5 @@
 //#region src/theme-switcher.js
-var e = class {
+var e = /* @__PURE__ */ new WeakMap(), t = class {
 	constructor(e = {}) {
 		this.options = {
 			selector: "[data-theme-switcher]",
@@ -12,15 +12,23 @@ var e = class {
 			...e
 		};
 	}
-	initialize(e = document) {
-		this.root = e, this.documentElement = document.documentElement, this.switchers = [...e.querySelectorAll(this.options.selector)], this.setTheme(this.getInitialTheme(), !1);
-		for (let e of this.switchers) e.addEventListener("click", () => {
-			this.setTheme(this.getNextTheme());
-		});
+	initialize(t = document) {
+		this.root = t, this.documentElement = document.documentElement, this.switchers = [...t.querySelectorAll(this.options.selector)], this.setTheme(this.getInitialTheme(), !1);
+		for (let t of this.switchers) {
+			let n = e.get(t);
+			n && t.removeEventListener("click", n);
+			let r = () => {
+				this.setTheme(this.getNextTheme());
+			};
+			t.addEventListener("click", r), e.set(t, r);
+		}
 		return this;
 	}
 	getInitialTheme() {
-		let e = localStorage.getItem(this.options.storageKey);
+		let e;
+		try {
+			e = localStorage.getItem(this.options.storageKey);
+		} catch {}
 		if (e === "light" || e === "dark") return e;
 		let t = this.documentElement.getAttribute("data-bs-theme");
 		return t === "light" || t === "dark" ? t : window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : this.options.defaultTheme;
@@ -32,7 +40,10 @@ var e = class {
 		return this.getCurrentTheme() === "dark" ? "light" : "dark";
 	}
 	setTheme(e, t = !0) {
-		this.documentElement.setAttribute("data-bs-theme", e), t && localStorage.setItem(this.options.storageKey, e), this.updateSwitchers(e), this.dispatchChange(e);
+		if (this.documentElement.setAttribute("data-bs-theme", e), t) try {
+			localStorage.setItem(this.options.storageKey, e);
+		} catch {}
+		this.updateSwitchers(e), this.dispatchChange(e);
 	}
 	updateSwitchers(e) {
 		let t = e === "dark" ? "light" : "dark";
@@ -40,7 +51,9 @@ var e = class {
 	}
 	updateIcon(e, t) {
 		let n = e.querySelector("[data-theme-switcher-icon]");
-		n && (n.className = t === "light" ? this.getOption(e, "lightIcon") : this.getOption(e, "darkIcon"));
+		if (!n) return;
+		let r = t === "light" ? this.getOption(e, "lightIcon") : this.getOption(e, "darkIcon");
+		r && (n.className = r);
 	}
 	updateLabel(e, t) {
 		let n = e.querySelector("[data-theme-switcher-label]");
@@ -55,4 +68,4 @@ var e = class {
 	}
 };
 //#endregion
-export { e as ThemeSwitcher };
+export { t as ThemeSwitcher };

@@ -1,3 +1,5 @@
+const switcherClickHandlers = new WeakMap();
+
 export class ThemeSwitcher {
 	constructor(options = {}) {
 		this.options = {
@@ -20,16 +22,28 @@ export class ThemeSwitcher {
 		this.setTheme(this.getInitialTheme(), false);
 
 		for (const switcher of this.switchers) {
-			switcher.addEventListener('click', () => {
+			const previousHandler = switcherClickHandlers.get(switcher);
+			if (previousHandler) {
+				switcher.removeEventListener('click', previousHandler);
+			}
+
+			const handler = () => {
 				this.setTheme(this.getNextTheme());
-			});
+			};
+			switcher.addEventListener('click', handler);
+			switcherClickHandlers.set(switcher, handler);
 		}
 
 		return this;
 	}
 
 	getInitialTheme() {
-		const storedTheme = localStorage.getItem(this.options.storageKey);
+		let storedTheme;
+		try {
+			storedTheme = localStorage.getItem(this.options.storageKey);
+		} catch {
+			// Storage can be unavailable in restricted browser contexts.
+		}
 
 		if (storedTheme === 'light' || storedTheme === 'dark') {
 			return storedTheme;
@@ -62,7 +76,11 @@ export class ThemeSwitcher {
 		this.documentElement.setAttribute('data-bs-theme', theme);
 
 		if (persist) {
-			localStorage.setItem(this.options.storageKey, theme);
+			try {
+				localStorage.setItem(this.options.storageKey, theme);
+			} catch {
+				// Keep the in-page theme change even when persistence is unavailable.
+			}
 		}
 
 		this.updateSwitchers(theme);
@@ -88,9 +106,13 @@ export class ThemeSwitcher {
 			return;
 		}
 
-		icon.className = targetTheme === 'light'
+		const iconClass = targetTheme === 'light'
 			? this.getOption(switcher, 'lightIcon')
 			: this.getOption(switcher, 'darkIcon');
+
+		if (iconClass) {
+			icon.className = iconClass;
+		}
 	}
 
 	updateLabel(switcher, targetTheme) {
