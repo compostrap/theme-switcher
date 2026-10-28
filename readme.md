@@ -61,6 +61,29 @@ The selected theme is stored in `localStorage`, so it is remembered on subsequen
 <html lang="en" data-bs-theme="light">
 ```
 
+## Avoiding a flash of the light theme
+
+A module script runs only after the browser has drawn the page, so a page with the dark theme stored is shown
+light for a moment on every load. Add a small inline script to `<head>`, before the styles, that sets the
+stored theme before the page is drawn; the switcher then keeps working as before:
+
+```html
+<head>
+	<meta charset="utf-8">
+	<script>
+		try {
+			const theme = localStorage.getItem('bootstrap-theme');
+			if (theme === 'light' || theme === 'dark') {
+				document.documentElement.setAttribute('data-bs-theme', theme);
+			}
+		} catch (e) { }
+	</script>
+	...
+</head>
+```
+
+Use the same key as the `storageKey` option when you change it.
+
 ## Styles
 
 Import the bundled CSS:
