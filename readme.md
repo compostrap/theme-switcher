@@ -55,7 +55,8 @@ JavaScript options.
 ## Introduction
 
 The switcher updates Bootstrap's global theme by changing `data-bs-theme` on the `<html>` element.
-The selected theme is stored in `localStorage`, so it is remembered on subsequent visits.
+The selected theme is stored in `localStorage`, so it is remembered on subsequent visits, and a choice made in
+another tab of the browser is taken over by the open pages.
 
 ```html
 <html lang="en" data-bs-theme="light">

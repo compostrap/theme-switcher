@@ -22,7 +22,9 @@ var e = /* @__PURE__ */ new WeakMap(), t = class {
 			};
 			t.addEventListener("click", r), e.set(t, r);
 		}
-		return this;
+		return this.storageHandler || (this.storageHandler = (e) => {
+			(e.key === this.options.storageKey || e.key === null) && this.setTheme(this.getInitialTheme(), !1);
+		}, window.addEventListener("storage", this.storageHandler)), this;
 	}
 	getInitialTheme() {
 		let e;

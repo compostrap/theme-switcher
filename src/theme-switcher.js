@@ -34,6 +34,16 @@ export class ThemeSwitcher {
 			switcherClickHandlers.set(switcher, handler);
 		}
 
+		// a choice made in another tab of the browser is taken over (the key is null when the whole storage was cleared)
+		if (!this.storageHandler) {
+			this.storageHandler = (event) => {
+				if (event.key === this.options.storageKey || event.key === null) {
+					this.setTheme(this.getInitialTheme(), false);
+				}
+			};
+			window.addEventListener('storage', this.storageHandler);
+		}
+
 		return this;
 	}
 
